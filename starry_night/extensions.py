@@ -1,7 +1,3 @@
-from flask_oauthlib.client import OAuth
-
-oauth = OAuth()
-
 from flask.ext.assets import Environment
 
 assets = Environment()

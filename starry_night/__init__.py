@@ -1,9 +1,9 @@
 from flask import Flask
 
 from . import models
-from .extensions import config, oauth, assets
+from .extensions import config, assets
 from .views.starry import starry
-from .views.users import users
+from .views.github import github_blueprint
 
 
 DEBUG = True
@@ -15,10 +15,10 @@ def create_app():
     app.config.from_object(__name__)
 
     config.init_app(app)
-    oauth.init_app(app)
     assets.init_app(app)
 
     app.register_blueprint(starry)
-    app.register_blueprint(users)
+    # github_blueprint.load_config()
+    app.register_blueprint(github_blueprint, url_prefix="/login")
 
     return app

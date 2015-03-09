@@ -8,7 +8,7 @@ def parse_link(link):
 
 class Paginator:
     def __init__(self, resp, page=1):
-        link = resp._resp.getheader("link")
+        link = resp.headers["link"]
         links = [parse_link(link) for link in link.split(", ")]
         self.first = 1
         self.current = page
