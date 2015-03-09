@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <ul class="blocks-3">
+        {% for repo in repos %}
+            <li>
+                <a href="{{ repo.html_url }}">{{ repo.full_name }}</a> |
+                <small>
+                    <a href="{{ url_for("starry.unstar", user=repo.owner.login, repo=repo.name) }}">
+                        Unstar
+                    </a>
+                </small>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if paginator.first != paginator.last %}
+        <ul class="pagination">
+            {% if paginator.current > 1 %}
+                <li><a href="{{ url_for("starry.index", page=paginator.current - 1) }}">&larr;</a></li>
+            {% endif %}
+            {% for page in range(paginator.first, paginator.last + 1) %}
+                {% if paginator.current == page %}
+                    <li><span>{{ page }}</span></li>
+                {% else %}
+                    <li><a href="{{ url_for("starry.index", page=page) }}">{{ page }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if paginator.current < paginator.last %}
+                <li><a href="{{ url_for("starry.index", page=paginator.current + 1) }}">&rarr;</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}

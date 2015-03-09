@@ -1,0 +1,24 @@
+# Everything needed in production
+
+# Flask
+Flask==0.10.1
+MarkupSafe==0.23
+Werkzeug==0.10.1
+Jinja2==2.7.3
+itsdangerous==0.24
+Flask-Assets==0.10
+flask-oauthlib==0.9.0
+
+# Forms
+Flask-WTF==0.11
+WTForms==2.0.2
+
+## Config
+flask-appconfig==0.9.1
+
+# Testing
+pytest>=2.6.3
+webtest
+
+# Management script
+Flask-Script
