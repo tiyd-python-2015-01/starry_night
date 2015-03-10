@@ -22,9 +22,7 @@ def index(page):
 @starry.route("/unstar/<user>/<repo>")
 @require_login
 def unstar(user, repo):
-    try:
-        resp = github.request("/user/starred/{}/{}".format(user, repo),
-                              data={}, format='json', method='DELETE')
-    except ValueError:
-        flash("You unstarred {}/{}.".format(user, repo))
-        return redirect(url_for(".index"))
+    resp = github.request("/user/starred/{}/{}".format(user, repo),
+                          data={}, format='json', method='DELETE')
+    flash("You unstarred {}/{}.".format(user, repo))
+    return redirect(url_for(".index"))

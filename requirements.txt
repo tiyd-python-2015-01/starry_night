@@ -7,7 +7,8 @@ Werkzeug==0.10.1
 Jinja2==2.7.3
 itsdangerous==0.24
 Flask-Assets==0.10
-flask-oauthlib==0.9.0
+#flask-oauthlib==0.9.0
+git+https://github.com/cndreisbach/flask-oauthlib@byte-string-fix
 
 # Forms
 Flask-WTF==0.11
